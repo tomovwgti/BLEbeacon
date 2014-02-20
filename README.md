@@ -4,14 +4,19 @@
 Node.jsを使ってBLEのAdvertiseビーコンをスキャンします。
 iBeaconかどうかの判断もします（てきとー
 
-#### 動作環境
+#### 動作確認環境
 + Macintosh (Marvericks)
 + Beaglebone Black + [PLANEX BT-MICRO4](http://www.amazon.co.jp/gp/product/B0071TE1G2/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B0071TE1G2&linkCode=as2&tag=tomovwgti-22)
 
 Nobleを使っています。[sandeepmistry / noble](https://github.com/sandeepmistry/noble)
 
-    Linuxで動作させたい場合はcloneした後、一度 npm uninstall nobleしてから、再度 npm install nobleとしてください
     Linuxの場合、BlueZ, libbluetooth-devが必要かも...依存わからんけど
+
+```
+$ git clone https://github.com/tomovwgti/BLEbeacon.git
+$ cd BLEbeacon
+$ npm install
+```
 
 #### BLEデバイスのスキャン
 
