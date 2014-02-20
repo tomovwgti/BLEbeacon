@@ -4,6 +4,10 @@
 Node.jsを使ってBLEのAdvertiseビーコンをスキャンします。
 iBeaconかどうかの判断もします（てきとー
 
+#### 動作環境
++ Macintosh (Marvericks)
++ Beaglebone Black + [PLANEX BT-MICRO4](http://www.amazon.co.jp/gp/product/B0071TE1G2/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B0071TE1G2&linkCode=as2&tag=tomovwgti-22)
+
 Nobleが必要です。[sandeepmistry / noble](https://github.com/sandeepmistry/noble)
 
     コードにはMac用のnobleが含まれています
