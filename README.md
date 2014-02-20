@@ -12,6 +12,7 @@ Nobleが必要です。[sandeepmistry / noble](https://github.com/sandeepmistry/
 
     コードにはMac用のnobleが含まれています
     Linuxで動作させたい場合はcloneした後、一度 npm uninstall nobleしてから、再度 npm install nobleとしてください
+    Linuxの場合、BlueZ, libbluetooth-devが必要かも...依存わからんけど
 
 #### BLEデバイスのスキャン
 
