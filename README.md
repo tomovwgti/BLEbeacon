@@ -1,19 +1,19 @@
 ## BLE Beacon
-----
+---
 
 Node.jsを使ってBLEのAdvertiseビーコンをスキャンします。
 iBeaconかどうかの判断もします（てきとー
 
 Nobleが必要です。[sandeepmistry / noble](https://github.com/sandeepmistry/noble)
 
-```
-$ npm install noble
-```
+    コードにはMac用のnobleが含まれています
+    Linuxで動作させたい場合はcloneした後、一度 npm uninstall nobleしてから、再度 npm install nobleとしてください
 
 #### BLEデバイスのスキャン
 
 ```
-$ node advertisement-discovery.js
+$ node advertisement-discovery.js # Macの場合
+$ sudo /home/ubuntu/.nodebrew/current/bin/node advertisement-discovery.js # Linixの場合の例root権限で 
 ```
 
 #### 出力例
