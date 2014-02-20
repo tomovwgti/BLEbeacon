@@ -1,0 +1,25 @@
+{
+  "name": "BLEbeacon",
+  "private": false,
+  "version": "0.0.0",
+  "description": "",
+  "main": "advertisement-discovery.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tomovwgti/BLEbeacon.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tomovwgti/BLEbeacon/issues"
+  },
+  "homepage": "https://github.com/tomovwgti/BLEbeacon",
+
+  "dependencies": {
+    "noble": "0.2.8"
+  },
+  "devDependencies": {}
+}
