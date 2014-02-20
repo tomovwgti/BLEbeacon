@@ -1,5 +1,5 @@
 ## BLE Beacon
-====
+----
 
 Node.jsを使ってBLEのAdvertiseビーコンをスキャンします。
 iBeaconかどうかの判断もします（てきとー
