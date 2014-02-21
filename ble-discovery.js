@@ -2,7 +2,7 @@ var noble = require('noble');
 
 noble.on('stateChange', function(state) {
     if (state === 'poweredOn') {
-        noble.startScanning();
+         noble.startScanning([], true);
     } else {
         noble.stopScanning();
     }
@@ -79,7 +79,6 @@ function isBeacon(data) {
         return false;
     }
 }
-
 
 /**
  * 精度計算
