@@ -2,6 +2,7 @@
 
 
 Node.jsを使ってBLEのAdvertiseビーコンをスキャンします。
+
 iBeaconかどうかの判断もします（てきとー
 
 #### 動作確認環境
@@ -9,6 +10,8 @@ iBeaconかどうかの判断もします（てきとー
 + Beaglebone Black + [PLANEX BT-MICRO4](http://www.amazon.co.jp/gp/product/B0071TE1G2/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B0071TE1G2&linkCode=as2&tag=tomovwgti-22)
 
 Nobleを使っています。[sandeepmistry / noble](https://github.com/sandeepmistry/noble)
+
+Bleaconを一部修正しています。[sandeepmistry / node-bleacon](https://github.com/sandeepmistry/node-bleacon)
 
     Linuxの場合、BlueZ, libbluetooth-devが必要かも...依存わからんけど
 
@@ -21,14 +24,22 @@ $ npm install
 #### BLEデバイスのスキャン
 
 ```
-$ node advertisement-discovery.js # Macの場合
-$ sudo /home/ubuntu/.nodebrew/current/bin/node advertisement-discovery.js # Linixの場合の例root権限で 
+$ node ble-discovery.js # Macの場合
+$ sudo /home/ubuntu/.nodebrew/current/bin/node ble-discovery.js # Linixの場合の例root権限で 
 ```
+
+#### iBeaconデバイスのスキャン
+
+```
+$ node ibeacon-discovery.js # Macの場合
+$ sudo /home/ubuntu/.nodebrew/current/bin/node ibeacon-discovery.js # Linixの場合の例root権限で 
+```
+
 
 #### 出力例
 
 ```
-$ node advertisement-discovery.js 
+$ node ble-discovery.js 
 peripheral discovered (77a45c7f36974ae190617e5601aa3e3c):
 	hello my local name is:
 		estimote
