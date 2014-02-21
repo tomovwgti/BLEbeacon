@@ -1,11 +1,5 @@
 var noble = require('noble');
 
-const PROXIMITY_UNKNOWN = 0;
-const PROXIMITY_IMMEDIATE = 1;
-const PROXIMITY_NEAR = 2;
-const PROXIMITY_FAR = 3;
-
-
 noble.on('stateChange', function(state) {
     if (state === 'poweredOn') {
         noble.startScanning();
@@ -86,6 +80,7 @@ function isBeacon(data) {
     }
 }
 
+
 /**
  * 精度計算
  *
@@ -94,19 +89,7 @@ function isBeacon(data) {
  * @returns {number}
  */
 function calculateAccuracy(txPower, rssi) {
-    if (rssi === 0) {
-        return -1.0; // if we cannot determine accuracy, return -1.
-    }
-
-    var ratio = rssi * 1.0 / txPower;
-    if (ratio < 1.0) {
-        return Math.pow(ratio,10);
-    }
-    else {
-        var accuracy =  (0.89976) * Math.pow(ratio,7.7095) + 0.111;
-        console.log(accuracy);
-        return accuracy;
-    }
+    return Math.pow(12.0, 1.5 * ((rssi / txPower) - 1));
 }
 
 /**
@@ -117,17 +100,12 @@ function calculateAccuracy(txPower, rssi) {
  */
 function calculateProximity(accuracy) {
     if (accuracy < 0) {
-        return PROXIMITY_UNKNOWN;
-        // is this correct?  does proximity only show unknown when accuracy is negative?  I have seen cases where it returns unknown when
-        // accuracy is -1;
+        return 'unknown';
+    } else if (accuracy < 0.5) {
+        return 'immediate';
+    } else if (accuracy < 4.0) {
+        return 'near';
+    } else {
+        return 'far';
     }
-    if (accuracy < 0.5 ) {
-        return PROXIMITY_IMMEDIATE;
-    }
-    // forums say 3.0 is the near/far threshold, but it looks to be based on experience that this is 4.0
-    if (accuracy <= 4.0) {
-        return PROXIMITY_NEAR;
-    }
-    // if it is > 4.0 meters, call it far
-    return PROXIMITY_FAR;
 }
