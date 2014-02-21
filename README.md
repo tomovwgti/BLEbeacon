@@ -4,6 +4,8 @@
 Node.jsを使ってBLEのAdvertiseビーコンをスキャンします。
 iBeaconかどうかの判断もします（てきとー
 
+**同じことがnode-bleaconで出来そうなので、[tomovwgti / node-bleacon](https://github.com/tomovwgti/node-bleacon)に移行します**
+
 #### 動作確認環境
 + Macintosh (Marvericks)
 + Beaglebone Black + [PLANEX BT-MICRO4](http://www.amazon.co.jp/gp/product/B0071TE1G2/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B0071TE1G2&linkCode=as2&tag=tomovwgti-22)
