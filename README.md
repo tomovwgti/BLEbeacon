@@ -35,6 +35,9 @@ $ node ibeacon-discovery.js # Macの場合
 $ sudo /home/ubuntu/.nodebrew/current/bin/node ibeacon-discovery.js # Linixの場合の例root権限で 
 ```
 
+##### iBeaconのProximityについて
+受信するBTデバイスによって感度が違うため、結局のところProximityの判定(immediate, nearなど)はそれぞれの受信デバイスとターゲットデバイスで調整する必要があるようです。
+
 
 #### 出力例
 
