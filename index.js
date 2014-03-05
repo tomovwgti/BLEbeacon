@@ -1,3 +1,3 @@
-var BLEbeacon = require('./lib/BLEbeacon');
+var Bleacon = require('./lib/bleacon');
 
-module.exports = new BLEbeacon();
+module.exports = new Bleacon();
