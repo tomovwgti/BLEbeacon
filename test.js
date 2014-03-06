@@ -4,5 +4,5 @@
 
 BLEbeacon = require('./lib/BLEbeacon');
 
-BLEbeacon = new BLEbeacon();
-BLEbeacon.scanBeacon();
+beacon = new BLEbeacon();
+beacon.scanBeacon();
