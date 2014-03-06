@@ -11,7 +11,7 @@ iBeaconかどうかの判断もします（てきとー
 
 Nobleを使っています。[sandeepmistry / noble](https://github.com/sandeepmistry/noble)
 
-Bleaconを一部修正しています。[sandeepmistry / node-bleacon](https://github.com/sandeepmistry/node-bleacon)
+Bleaconを修正しています。[sandeepmistry / node-bleacon](https://github.com/sandeepmistry/node-bleacon)
 
     Linuxの場合、BlueZ, libbluetooth-devが必要かも...依存わからんけど
 
@@ -28,15 +28,19 @@ $ node ble-discovery.js # Macの場合
 $ sudo /home/ubuntu/.nodebrew/current/bin/node ble-discovery.js # Linixの場合の例root権限で 
 ```
 
-#### iBeaconデバイスのスキャン
+#### iBeaconデバイスのスキャンと発見・消失・Proximity変化イベント
+
+1. 起動時に10sスキャンを行い、発見したデバイスをリストに登録
+2. 10s待った後に再度スキャンを10s行う、以下繰り返し
+3. 前回と今回の差分を抽出し、新たに見つかったデバイス、消失したデバイス、Proximityに変化のあったデバイスにそれぞれイベントを発生させる
 
 ```
-$ node ibeacon-discovery.js # Macの場合
-$ sudo /home/ubuntu/.nodebrew/current/bin/node ibeacon-discovery.js # Linixの場合の例root権限で 
+$ node beacon.js # Macの場合
+$ sudo /home/ubuntu/.nodebrew/current/bin/node beacon.js # Linixの場合の例root権限で 
 ```
 
 #### iBeaconのProximityについて
-受信するBTデバイスによって感度が違うため、結局のところProximityの判定(immediate, nearなど)はそれぞれの受信デバイスとターゲットデバイスで調整する必要があるようです。lib/bleacon.jsの中を調整します。
+受信するBTデバイスによって感度が違うため、結局のところProximityの判定(immediate, nearなど)はそれぞれの受信デバイスとターゲットデバイスで調整する必要があるようです。lib/blebeacon.jsの中を調整します。
 
 
 #### 出力例
@@ -72,5 +76,50 @@ iBeacon Found!!
   minor: 30765,
   rssi_row: 182,
   rssi: -74 }
+
+```
+
+```
+$ node beacon.js
+estimoteb9407f30f5f8466eaff925556b57fe6d3360430765: change immediate to near
+proximity変わった
+{ name: 'estimote',
+  uuid: 'b9407f30f5f8466eaff925556b57fe6d',
+  major: 33604,
+  minor: 30765,
+  measuredPower: -74,
+  rssi: -68,
+  accuracy: 0.739176628587144,
+  proximity: 'near' }
+消失!!
+disappear
+{ name: 'estimote',
+  uuid: 'b9407f30f5f8466eaff925556b57fe6d',
+  major: 45756,
+  minor: 53882,
+  measuredPower: -74,
+  rssi: -76,
+  accuracy: 1.105988448636924,
+  proximity: 'near' }
+estimoteb9407f30f5f8466eaff925556b57fe6d3360430765: change immediate to near
+proximity変わった
+{ name: 'estimote',
+  uuid: 'b9407f30f5f8466eaff925556b57fe6d',
+  major: 33604,
+  minor: 30765,
+  measuredPower: -74,
+  rssi: -70,
+  accuracy: 0.8175208127197672,
+  proximity: 'near' }
+発見!!
+appear
+{ name: 'estimote',
+  uuid: 'b9407f30f5f8466eaff925556b57fe6d',
+  major: 45756,
+  minor: 53882,
+  measuredPower: -74,
+  rssi: -87,
+  accuracy: 1.924770003766445,
+  proximity: 'near' }
 
 ```

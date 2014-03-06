@@ -5,23 +5,25 @@
 BLEbeacon = require('./index');
 
 // デバイスのスキャンを開始
-// 内部では発見したデバイスをリストで管理し、再スキャン時の比較を行っている
+// 内部では発見したデバイスをリストで管理し、再スキャン時に比較を行っている
 BLEbeacon.startScanning();
 
 // 既存のデバイスのproximityが変化したときのコールバック
 BLEbeacon.on('proximity', function(beacon) {
-    console.log('proximity');
+    console.log('proximity変わった');
     console.dir(beacon);
 });
 
 // 既存のデバイスに新しいデバイスが発見された場合に呼ばれるコールバック
 BLEbeacon.on('appear', function(beacon) {
+    console.log('発見!!');
     console.log('appear');
     console.dir(beacon);
 })
 
 // 既存のデバイスが見つからなくなったときに呼ばれるコールバック
 BLEbeacon.on('disappear', function(beacon) {
+    console.log('消失!!');
     console.log('disappear');
     console.dir(beacon);
 })
