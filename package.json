@@ -20,7 +20,8 @@
 
   "dependencies": {
     "noble": "~0.2.7",
-    "debug": "~0.7.2"
+    "debug": "~0.7.2",
+    "simplesets": "~1.2.0"
   },
   "devDependencies": {}
 }
