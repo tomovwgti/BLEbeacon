@@ -4,6 +4,15 @@
 
 BLEbeacon = require('./index');
 
+var device = {
+    uuid: 'b9407f30f5f8466eaff925556b57fe6d',
+    major: 45756,
+    minor: 53882
+}
+
+// 対象とするデバイスを設定
+BLEbeacon.setBeacon(device);
+
 // デバイスのスキャンを開始
 // 内部では発見したデバイスをリストで管理し、再スキャン時に比較を行っている
 BLEbeacon.startScanning();
@@ -34,3 +43,9 @@ BLEbeacon.on('disappear', function(beacon) {
  console.log('discover');
  console.dir(beacon);
  })*/
+
+
+// 現在のデバイスのリストを返す
+/*console.log('beacons');
+console.dir(BLEbeacon.getBeacons());
+*/
