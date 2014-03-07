@@ -11,7 +11,7 @@ var device = {
 }
 
 // 対象とするデバイスを設定
-BLEbeacon.setBeacon(device);
+//BLEbeacon.setBeacon(device);
 
 // デバイスのスキャンを開始
 // 内部では発見したデバイスをリストで管理し、再スキャン時に比較を行っている
