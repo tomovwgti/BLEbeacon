@@ -22,6 +22,7 @@ var beacon = {
     companyId : null,   // 企業名ID
     uuid : null,        // UUID
     major : null,       // MAJOR ID
+    minor : null,       // MINOR ID
     txPower : null,     // 1m離れた時のRSSI(固有値)
     rssi : null,        // 測定されたRSSI値
     accuracy : null,    // 精度
