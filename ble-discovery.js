@@ -53,7 +53,7 @@ noble.on('discover', function(peripheral) {
             beacon.txPower = -((~parseInt(data.substring(48, 50), 16) & 0x000000FF) + 1);
             beacon.rssi = peripheral.rssi;
             beacon.accuracy = calculateAccuracy(beacon.txPower, beacon.rssi);
-            beacon.proximity = calculateProximity(beacon.accuracy);
+            beacon.proximity = calculateProximity(beacon.txPower, beacon.rssi);
             console.dir(beacon);
         }
     }
@@ -95,17 +95,31 @@ function calculateAccuracy(txPower, rssi) {
 /**
  * 近接距離
  *
- * @param accuracy
+ * @param txPower
+ * @param rssi
  * @returns {number}
  */
-function calculateProximity(accuracy) {
-    if (accuracy < 0) {
-        return 'unknown';
-    } else if (accuracy < 0.5) {
-        return 'immediate';
-    } else if (accuracy < 4.0) {
-        return 'near';
+function calculateProximity(txPower, rssi) {
+    /* 距離計算は以下に基づく
+     RSSI = A - 10Nlogd
+     A : 1m離れた位置でのdBm
+     N : 理想値は2
+     d : 距離
+     RSSI : 受信測定値
+     */
+    var N = 1.5; // 環境によって設定値を変える必要あり（実測での感覚）
+    var distance = Math.pow(10, (txPower - rssi) / (10 * N));
+    var proximity = null;
+
+    if (rssi >= txPower) {
+        proximity = 'immediate';
+    } else if (distance > 1.0 && distance <= 5.0) {
+        proximity = 'near';
+    } else if (distance > 5.0 && distance < 10.0) {
+        proximity = 'far';
     } else {
-        return 'far';
+        proximity = 'unknown';
     }
+
+    return proximity;
 }
