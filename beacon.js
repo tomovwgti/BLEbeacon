@@ -3,15 +3,24 @@
  */
 
 BLEbeacon = require('./index');
+var request = require('superagent');
 
+
+var device = {
+    uuid: 'e2c56db5dffb48d2b060d0f5a71096e0',
+    major: 1,
+    minor: 1
+}
+/*
 var device = {
     uuid: 'b9407f30f5f8466eaff925556b57fe6d',
     major: 45756,
     minor: 53882
 }
+*/
 
 // 対象とするデバイスを設定
-//BLEbeacon.setBeacon(device);
+BLEbeacon.setBeacon(device);
 
 // デバイスのスキャンを開始
 // 内部では発見したデバイスをリストで管理し、再スキャン時に比較を行っている
@@ -28,6 +37,8 @@ BLEbeacon.on('appear', function(beacon) {
     console.log('発見!!');
     console.log('appear');
     console.dir(beacon);
+
+    postBeacon(beacon);
 })
 
 // 既存のデバイスが見つからなくなったときに呼ばれるコールバック
@@ -37,13 +48,24 @@ BLEbeacon.on('disappear', function(beacon) {
     console.dir(beacon);
 })
 
+
+function postBeacon(beacon) {
+    request.post('http://localhost:3000/api/beacon')
+        .send(beacon)
+        .end(function(error, res) {
+        console.log('post');
+    });
+}
+
+
 // デバイスを発見すると呼ばれるコールバック
 // これを有効にすると、毎回のスキャンで呼び出されてしまうので注意が必要
-/*BLEbeacon.on('discover', function(beacon) {
+/*
+BLEbeacon.on('discover', function(beacon) {
  console.log('discover');
  console.dir(beacon);
- })*/
-
+})
+*/
 
 // 現在のデバイスのリストを返す
 /*console.log('beacons');
