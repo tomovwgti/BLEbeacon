@@ -16,8 +16,6 @@ BLEbeacon.startScanning();
 BLEbeacon.on('proximity', function(beacon) {
     console.log('proximity変わった');
     console.dir(beacon);
-
-    postBeacon(beacon, 'discover');
 });
 
 // 既存のデバイスに新しいデバイスが発見された場合に呼ばれるコールバック
