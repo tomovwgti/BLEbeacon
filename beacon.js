@@ -4,9 +4,20 @@
 
 BLEbeacon = require('./index');
 
+/**
+ * 検索するデバイスの情報
+ * iBeacon の場合は、３つの情報が必要
+ * BLE の場合は、uuidのみで検索を行う
+ * @type {{uuid: string, major: number, minor: number}}
+ */
+var device = {
+    uuid: 'f8afd77bdb354a00977a750f5f30ecc2',
+    major: 1,
+    minor: 1
+}
 
-// 対象とするデバイスを設定
-//BLEbeacon.setBeacon(device);
+// 対象とするBLEデバイスを設定（設定しない場合は全スキャンする）
+BLEbeacon.setBeacon(device);
 
 // デバイスのスキャンを開始
 // 内部では発見したデバイスをリストで管理し、再スキャン時に比較を行っている
