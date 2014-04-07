@@ -28,8 +28,9 @@ $ node ble-discovery.js # Macの場合
 $ sudo /home/ubuntu/.nodebrew/current/bin/node ble-discovery.js # Linixの場合の例root権限で 
 ```
 
-#### iBeaconデバイスのスキャンと発見・消失・Proximity変化イベント
+#### iBeacon/BLEデバイスのスキャンと発見・消失・Proximity変化イベント
 ※アルゴリズムを見直し、スキャンをフリーランにしました
+※BLEデバイスのスキャンも統合しました
 
 1. 起動するとスキャンを行い、20sおきに既存リストと比較して消失デバイスを検出する
 2. デバイスを検出するごとに、新規なのか、既存なのか判定を行う
