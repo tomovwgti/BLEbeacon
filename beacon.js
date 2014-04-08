@@ -60,7 +60,13 @@ BLEbeacon.on('disappear', function(beacon) {
 
 
 function postBeacon(beacon, status) {
-    var key = beacon.uuid + beacon.major + beacon.minor;
+    var key;
+    if (beacon.major && beacon.minor) {
+        key = beacon.uuid + beacon.major + beacon.minor;
+    } else {
+        key = beacon.uuid;
+    }
+    console.log(key);
     request.post('http://localhost:3000/api/beacon')
         .send({'beacon': beacon, 'status': status, 'key': key})
         .end(function(error, res) {
