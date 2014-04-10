@@ -13,7 +13,7 @@ Nobleを使っています。[sandeepmistry / noble](https://github.com/sandeepm
 
 Bleaconを修正しています。[sandeepmistry / node-bleacon](https://github.com/sandeepmistry/node-bleacon)
 
-    Linuxの場合、BlueZ, libbluetooth-devが必要かも...依存わからんけど
+    Linuxの場合、libbluetooth-devが必要
 
 ```
 $ git clone https://github.com/tomovwgti/BLEbeacon.git
@@ -29,8 +29,9 @@ $ sudo /home/ubuntu/.nodebrew/current/bin/node ble-discovery.js # Linixの場合
 ```
 
 #### iBeacon/BLEデバイスのスキャンと発見・消失・Proximity変化イベント
-※アルゴリズムを見直し、スキャンをフリーランにしました
-※BLEデバイスのスキャンも統合しました
+
+※ アルゴリズムを見直し、スキャンをフリーランにしました<br>
+※ BLEデバイスのスキャンも統合しました
 
 1. 起動するとスキャンを行い、20sおきに既存リストと比較して消失デバイスを検出する
 2. デバイスを検出するごとに、新規なのか、既存なのか判定を行う
